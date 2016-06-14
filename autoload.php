@@ -18,7 +18,7 @@ spl_autoload_register(function ($class) {
 
     // base directory for the namespace prefix
     $base_dir = __DIR__ . '/src/';
-
+    
     // does the class use the namespace prefix?
     $len = strlen($prefix);
     if (strncmp($prefix, $class, $len) !== 0) {
