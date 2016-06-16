@@ -1,12 +1,18 @@
 <?php
+
 namespace Alfa\Abstracao;
 
-interface Entidade
-{
-    public function setNome($nome);
-    public function getNome();
-    public function create($colunas, $valores);
-    public function retrieve($colunas, $clausula);
-    public function update($colunas, $valores, $clausula);
-    public function delete($clausula);
+interface Entidade {
+
+    public function setNomeTabela($nome);
+
+    public function getNomeTabela();
+
+    public function create();
+
+    public function retrieve(\Alfa\Dao\Clausula $clausula);
+
+    public function update(\Alfa\Dao\Clausula $clausula);
+
+    public function delete(\Alfa\Dao\Clausula $clausula);
 }

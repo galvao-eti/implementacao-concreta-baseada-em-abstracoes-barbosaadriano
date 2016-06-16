@@ -25,7 +25,7 @@ class BaseDeDados implements \Alfa\Abstracao\BaseDeDados {
      */
     function __construct(\Alfa\Abstracao\SGBD $server, $nome = null) {
         $this->sgbd = $server;
-        $this->nome;
+        $this->nome = $nome;
     }
 
     /**
@@ -39,10 +39,10 @@ class BaseDeDados implements \Alfa\Abstracao\BaseDeDados {
                 throw new \Exception("Não é possível conectar sem informar o nome da base de dados!");
             }
             try {
-                self::$conexao = new PDO("mysql:host={$this->sgbd->getEndereco()};"
+                self::$conexao = new \PDO("mysql:host={$this->sgbd->getEndereco()};"
                         . " port={$this->sgbd->getPorta()}; "
                         . " dbname={$this->getNome()}", $this->sgbd->getUsuario()
-                        , $this->sgbd->getSenha(), array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+                        , $this->sgbd->getSenha(), array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             } catch (\Exception $exc) {
                 throw new \Exception("Erro ao tentar iniciar uma conexão! " . $exc->getMessage());
             }
